@@ -7,6 +7,16 @@
  * Повертає - foundElement - перший елемент масиву, який є більшим за задане число
  */
 function findElementGreaterThan(arr, num) {
+  if (!Array.isArray(arr)) {
+    return undefined;
+  }
+  const foundElement = arr.find((element) => element > num);
+  if (foundElement) {
+    return foundElement;
+  } else {
+    return "Числа яке задовільняе умову не знайдено";
+  }
+
   // Перевіряємо, чи вхідний параметр є масивом, якщо ні повертаємо undefined
   // повертаємо undefined
   // Використовуємо метод find для пошуку першого елементу, який є більшим за задане число num.
@@ -28,6 +38,11 @@ console.log(findElementGreaterThan([1, 2, 3, 4, 5], 3)); // Виведе 4
  * Якщо об'єкт не знайдено, повертає -1.
  */
 function findIndexByProperty(arr, name) {
+  if (!Array.isArray(arr)) {
+    return -1;
+  }
+  const foundIndex = arr.findIndex((obj) => obj.name === name);
+  return foundIndex >= 0 ? foundIndex : "Об`єкта з таким іменем не знайдено";
   // Перевіряємо, чи вхідний параметр є масивом, якщо ні повертаємо -1
   // Використовуємо метод findIndex для пошуку індексу об'єкта, властивість 'name' якого співпадає з заданим іменем.
   // Повертаємо знайдений індекс або -1, якщо об'єкт не знайдено.
@@ -54,6 +69,13 @@ console.log(
  * Якщо таке число не знайдено, повертає 'Парних чисел не знайдено'.
  */
 function findLastEvenNumber(arr) {
+  if (!Array.isArray(arr)) {
+    return "Вхідний параметр має бути масивом";
+  }
+  const LastEvenNumber = arr.findLast((num) => num % 2 === 0);
+  return LastEvenNumber !== undefined
+    ? LastEvenNumber
+    : "Парних чисел не знайдено";
   // Перевіряємо, чи вхідний параметр є масивом, якщо ні повертаємо 'Вхідний параметр має бути масивом'
   // За допомогою метода findLast знаходимо останнє парне число в масиві.
   // Повертаємо знайдене число або 'Парних чисел не знайдено', якщо таке число не знайдено.
@@ -72,6 +94,12 @@ console.log(findLastEvenNumber([1, 2, 3, 4, 5])); // Виведе 4
  * Повертає - subArrayString - рядок, отриманий в результаті конвертації підмасиву.
  */
 function getSubArrayAndConvertToString(arr, startIdx) {
+  if (!Array.isArray(arr)) {
+    return "Вхідний параметр має бути масивом";
+  }
+  const SubArray = arr.slice(startIdx);
+  const subArrayString = SubArray.join(" ");
+  return subArrayString;
   // Перевіряємо, чи вхідний параметр є масивом, якщо ні повертаємо 'Вхідний параметр має бути масивом'
   // За допомогою методу slice() отримуємо підмасив від заданого індексу до кінця масиву.
   // За допомогою методу join() конвертуємо підмасив в рядок.
@@ -96,6 +124,13 @@ console.log(
  * Повертає - arrayKeys - масив ключів вхідного масиву.
  */
 function getArrayKeys(arr) {
+  if (!Array.isArray(arr)) {
+    return "Вхідний параметр має бути масивом";
+  }
+  const arrayKeysIterator = arr.keys();
+  const arrayKeys = Array.from(arrayKeysIterator);
+  return arrayKeys;
+
   // Перевіряємо, чи вхідний параметр є масивом, якщо ні повертаємо 'Вхідний параметр має бути масивом'
   // За допомогою методу keys() отримуємо об'єкт ітератора, який містить ключі масиву.
   // Конвертуємо ітератор в масив за допомогою методу from.
