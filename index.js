@@ -426,6 +426,14 @@ console.log(findLongestWord(["apple", "banana", "pineapple", "watermelon"])); //
 Повертає - duplicateElements - новий масив, в якому лише дубльовані елементи.
 */
 function findDuplicateElements(arr) {
+  if (!Array.isArray(arr)) {
+    return [];
+  }
+  const duplicateElements = arr.filter((num, index) => {
+    return arr.indexOf(num) !== index;
+  });
+  return duplicateElements;
+
   // Перевіряємо, чи вхідний параметр є масивом, якщо ні, повертаємо пустий масив
   // Використовуємо метод filter() для вибірки лише дубльованих елементів
   // Перевіряємо, чи є індекс поточного елемента відмінним від індексу першого входження елемента, та повертаємо результат
@@ -444,6 +452,15 @@ console.log(findDuplicateElements([1, 2, 3, 4, 2, 5, 6, 3, 5])); // Виведе
 Повертає - capitalizedArray - новий масив, де кожне слово має першу літеру у верхньому регістрі.
 */
 function capitalizeWords(arr) {
+  if (!Array.isArray(arr)) {
+    return [];
+  }
+  const capitalizedArray = arr.map((word) => {
+    const capitalizedWord = word.charAt(0).toUpperCase() + word.slice(1);
+    return capitalizedWord;
+  });
+  return capitalizedArray;
+
   // Перевіряємо, чи вхідний параметр є масивом, якщо ні, повертаємо пустий масив
   // Використовуємо метод map() для перетворення кожного слова в рядку з першою великою літерою
   // Перетворюємо першу літеру слова у верхній регістр да додамо до неї всі символи слова крім першого
@@ -464,6 +481,13 @@ console.log(capitalizeWords(["apple", "banana", "orange"])); // Виведе ['A
   Повертає - totalPrice - загальна ціна всіх товарів.
   */
 function calculateTotalPrice(arr) {
+  if (!Array.isArray(arr)) {
+    return 0;
+  }
+  const totalPrice = arr.reduce((total, product) => {
+    return total + product.price;
+  }, 0);
+  return totalPrice;
   // Перевіряємо, чи вхідний параметр є масивом, якщо ні, повертаємо 0
   // Використовуємо метод reduce() для обчислення загальної ціни
   // Додаємо ціну товару до загальної суми та повертаємо результат
@@ -489,6 +513,11 @@ console.log(
 Повертає - lastIndex - індекс останнього від'ємного числа.
 */
 function findLastNegativeNumberIndex(arr) {
+  if (!Array.isArray(arr)) {
+    return -1;
+  }
+  const lastIndex = arr.findLastIndex((num) => num < 0);
+  return lastIndex;
   // Перевіряємо, чи вхідний параметр є масивом, якщо ні, повертаємо -1
   // Використовуємо метод findLastIndex() для знаходження індексу останнього входження від'ємного числа
   // Повертаємо індекс останнього від'ємного числа
